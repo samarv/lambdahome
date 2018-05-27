@@ -1,14 +1,4 @@
-// React core.
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './App.css'; // This uses CSS modules.
-//react router
-import { Route } from 'react-router-dom'
-
-//components
-//import LogIn from './Component/LogIn'
-
-//firebase
+import React, { Component } from 'react';
 import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
@@ -23,20 +13,23 @@ var config = {
 firebase.initializeApp(config);
 
 
-const InitialState = {
-  isSignedIn: false,
-  name: '',
-  email: '',
-  github: '',
-  linkedin: '',
-  instagram: ''
-}
+// const uiConfig = {
+//   // Popup signin flow rather than redirect flow.
+//   signInFlow: 'popup',
+//   // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
+//   signInSuccessUrl: '/signedIn',
+//   // We will display Google and Facebook as auth providers.
+//   signInOptions: [
+//     firebase.auth.GithubAuthProvider.PROVIDER_ID,
+//   ]
+// };
 
-class App extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {...InitialState}
-  }
+export default class LogIn extends Component {
+  // The component's Local state.
+  state = {
+    isSignedIn: false // Local signed-in state.
+  };
+
 
   uiConfig = {
     // Popup signin flow rather than redirect flow.
@@ -62,7 +55,6 @@ class App extends React.Component {
     this.unregisterAuthObserver();
   }
 
-
   render() {
     if (!this.state.isSignedIn) {
       return (
@@ -75,6 +67,7 @@ class App extends React.Component {
     }
     return (
       <div>
+        {this.props.isSignedIn = this.state.isSignedIn}
         <h1>My App</h1>
         {console.log(firebase.auth().currentUser.displayName)}
         {console.log(firebase.auth().currentUser.email)}
@@ -84,6 +77,5 @@ class App extends React.Component {
       </div>
     );
   }
-}
+};
 
-export default App;
