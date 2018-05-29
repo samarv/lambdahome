@@ -5,8 +5,9 @@ import './App.css'; // This uses CSS modules.
 //react router
 import { Route } from 'react-router-dom'
 
+
 //components
-//import LogIn from './Component/LogIn'
+import Member from './Component/Member'
 
 //firebase
 import firebase from 'firebase';
@@ -62,25 +63,32 @@ class App extends React.Component {
     this.unregisterAuthObserver();
   }
 
+  signout= () => {
+    firebase.auth().signOut();
+  }
+
 
   render() {
     if (!this.state.isSignedIn) {
       return (
-        <div>
-          <h1>My App</h1>
-          <p>Please sign-in:</p>
+        <div className="Mycontainer">
+          <div className="logoContainer">
+            <img className = "lambdaLogo" alt="" src={require('./logo.png')} />
+            {/* <p>    Home </p> */}
+          </div>
           <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()}/>
         </div>
       );
     }
     return (
       <div>
-        <h1>My App</h1>
+        <Member signout={this.signout} />
         {console.log(firebase.auth().currentUser.displayName)}
         {console.log(firebase.auth().currentUser.email)}
         {console.log(this.props)}
-        <p>Welcome {firebase.auth().currentUser.displayName}! You are now signed-in!</p>
-        <a onClick={() => firebase.auth().signOut()}>Sign-out</a>
+        
+        {/* <p>Welcome {firebase.auth().currentUser.displayName}! You are now signed-in!</p>
+        <a onClick={() => firebase.auth().signOut()}>Sign-out</a> */}
       </div>
     );
   }

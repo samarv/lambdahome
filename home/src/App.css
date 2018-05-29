@@ -27,19 +27,19 @@
   to { transform: rotate(360deg); }
 }
 
-.container {
+.Mycontainer {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #0288D1;
-  background: radial-gradient(circle, #039BE5, #01579b);
+  background-color: #a90329;
+  background: radial-gradient(circle, #b5002a, #6d0019);
   z-index: 10000;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: whitesmoke;
   flex-direction: column;
   font-family: sans-serif;
 }
@@ -86,4 +86,9 @@
   color: blue;
   text-decoration: underline;
   margin-top: 10px;
+}
+
+.logoContainer {
+  display: flex;
+  flex-direction: row;
 }

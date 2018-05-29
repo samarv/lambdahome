@@ -13,16 +13,7 @@ var config = {
 firebase.initializeApp(config);
 
 
-// const uiConfig = {
-//   // Popup signin flow rather than redirect flow.
-//   signInFlow: 'popup',
-//   // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
-//   signInSuccessUrl: '/signedIn',
-//   // We will display Google and Facebook as auth providers.
-//   signInOptions: [
-//     firebase.auth.GithubAuthProvider.PROVIDER_ID,
-//   ]
-// };
+
 
 export default class LogIn extends Component {
   // The component's Local state.
